@@ -6,7 +6,7 @@
 
 \- Luis Díaz → \[LuisDiaz2250]
 \- Camila Ariza → \[camilaariza-bot]
-
+\- Tomás Rodriguez → \[TomasRP20]
 
 ## 🌍 Descripción
 
