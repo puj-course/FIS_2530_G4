@@ -52,3 +52,4 @@ Su objetivo es ayudar a las personas a elegir la ruta más ecológica y calcular
 
 Este proyecto se inspira en la encíclica **Laudato Si’** y en los **Objetivos de Desarrollo Sostenible (ODS)**, buscando unir tecnología y conciencia ambiental para transformar la manera en que nos movemos en la ciudad.
 
+- Ajuste menor para #31
