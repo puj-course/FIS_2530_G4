@@ -5,6 +5,8 @@
 
 
 \- Luis Díaz → \[LuisDiaz2250]
+\- Camila Ariza → \[camilaariza-bot]
+
 
 ## 🌍 Descripción
 
