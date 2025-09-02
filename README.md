@@ -1,5 +1,7 @@
 # 🚴 GreenRoute – Movilidad sostenible
 
+## Avance de la Issue #1 - Elaboración inicial del README
+
 \## Integrantes
 
 
