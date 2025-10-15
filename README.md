@@ -6,7 +6,8 @@
 
 
 
-\- Luis Díaz → \[LuisDiaz2250]
+## Integrantes del Grupo 4
+- Luis Díaz — [Perfil GitHub](https://github.com/luisdiaz123)
 \- Camila Ariza → \[camilaariza-bot]
 \- Tomás Rodriguez → \[TomasRP20]
 
