@@ -56,7 +56,7 @@ Este proyecto se inspira en la encíclica **Laudato Si’** y en los **Objetivos
  feat/arq-5-readme-links
 
 
-\## 🧭 Arquitectura del Proyecto
+ 🧭 Arquitectura del Proyecto
 
 
 
