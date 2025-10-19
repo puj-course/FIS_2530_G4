@@ -3,84 +3,37 @@
 
 
 
-
 ```mermaid
-
 flowchart LR
+  subgraph Clients
+    W[Web App React]
+    M[Mobile App React Native]
+  end
 
-&nbsp; %% --- Clients ---
+  subgraph Backend["(API REST GreenRoute)"]
+    A1[Auth / JWT]
+    A2[Rutas y Viajes]
+    A3[Gamificación y Ranking]
+    A4[Reportes]
+  end
 
-&nbsp; subgraph Clients
+  subgraph Data
+    DB[(PostgreSQL)]
+    REDIS[(Redis Cache)]
+  end
 
-&nbsp;   W\[Web App (React)]
+  subgraph External["Proveedores externos"]
+    MAPS[OpenRouteService o Google Maps]
+    MAIL[Servicio de Correo / Push]
+    OBS[Logs y Métricas]
+  end
 
-&nbsp;   M\[Mobile App (React Native)]
+  W -->|HTTPS JSON| Backend
+  M -->|HTTPS JSON| Backend
 
-&nbsp; end
+  Backend -->|SQL| DB
+  Backend <-->|Cache| REDIS
 
-
-
-&nbsp; %% --- Backend API ---
-
-&nbsp; subgraph Backend\["API GreenRoute (Node.js + Express)"]
-
-&nbsp;   A1\[Auth/JWT]
-
-&nbsp;   A2\[Rutas \& Viajes]
-
-&nbsp;   A3\[Gamificación \& Ranking]
-
-&nbsp;   A4\[Reportes]
-
-&nbsp; end
-
-
-
-&nbsp; %% --- Data Layer ---
-
-&nbsp; subgraph Data
-
-&nbsp;   DB\[(PostgreSQL)]
-
-&nbsp;   REDIS\[(Redis Cache)]
-
-&nbsp; end
-
-
-
-&nbsp; %% --- External Providers ---
-
-&nbsp; subgraph External\["Proveedores externos"]
-
-&nbsp;   MAPS\[OpenRouteService / Google Maps]
-
-&nbsp;   MAIL\[Email/Push service]
-
-&nbsp;   OBS\[Logs \& Métricas]
-
-&nbsp; end
-
-
-
-&nbsp; %% --- Flujos ---
-
-&nbsp; W -->|HTTPS JSON| Backend
-
-&nbsp; M -->|HTTPS JSON| Backend
-
-
-
-&nbsp; Backend -->|SQL| DB
-
-&nbsp; Backend <-->|cache| REDIS
-
-
-
-&nbsp; A2 -->|/directions| MAPS
-
-&nbsp; Backend --> MAIL
-
-&nbsp; Backend --> OBS
-
-
-
+  A2 -->|/directions| MAPS
+  Backend --> MAIL
+  Backend --> OBS

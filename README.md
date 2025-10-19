@@ -1,12 +1,14 @@
 # 🚴 GreenRoute – Movilidad sostenible
 
+## Avance de la Issue #1 - Elaboración inicial del README
+
 \## Integrantes
 
 
 
 \- Luis Díaz → \[LuisDiaz2250]
-- Camila Ariza → \[camilaariza-bot]
-
+\- Camila Ariza → \[camilaariza-bot]
+\- Tomás Rodriguez → \[TomasRP20]
 
 
 ## 🌍 Descripción
@@ -51,6 +53,7 @@ Su objetivo es ayudar a las personas a elegir la ruta más ecológica y calcular
 
 Este proyecto se inspira en la encíclica **Laudato Si’** y en los **Objetivos de Desarrollo Sostenible (ODS)**, buscando unir tecnología y conciencia ambiental para transformar la manera en que nos movemos en la ciudad.
 
+ feat/arq-5-readme-links
 
 
 \## 🧭 Arquitectura del Proyecto
@@ -76,4 +79,6 @@ La siguiente sección reúne los diagramas desarrollados durante la fase de \*\*
 
 
 > 📌 Estos diagramas se encuentran en la carpeta \[`docs/arquitectura/`](docs/arquitectura/) y fueron creados con \*\*Mermaid\*\*, por lo que se renderizan automáticamente en GitHub.
+
+
 
