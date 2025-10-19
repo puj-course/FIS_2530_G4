@@ -10,7 +10,7 @@ flowchart LR
     M[Mobile App React Native]
   end
 
-  subgraph Backend["API GreenRoute (Node.js + Express)"]
+  subgraph Backend["(API REST GreenRoute)"]
     A1[Auth / JWT]
     A2[Rutas y Viajes]
     A3[Gamificación y Ranking]
