@@ -13,8 +13,12 @@ RUN npm install
 # Copiar el resto del código
 COPY . .
 
-# Exponer el puerto (coincide con el usado en index.js)
-EXPOSE 3001
+# Construir la aplicación para producción
+RUN npm run build
 
-# Comando para iniciar el servidor
-CMD ["node", "index.js"]
+# Usar servidor web ligero para servir el frontend
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
+
+# Exponer el puerto por defecto de serve
+EXPOSE 3000
