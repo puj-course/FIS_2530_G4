@@ -7,160 +7,81 @@
 
 
 ```mermaid
-
 erDiagram
-
-&nbsp;   USUARIO {
-
-&nbsp;     uuid id PK
-
-&nbsp;     string nombre
-
-&nbsp;     string email UNIQUE
-
-&nbsp;     string password\_hash
-
-&nbsp;     string rol
-
-&nbsp;     timestamp creado\_en
-
-&nbsp;   }
-
-
-
-&nbsp;   MODO\_TRANSPORTE {
-
-&nbsp;     int id PK
-
-&nbsp;     string nombre  "walk|bike|bus|car"
-
-&nbsp;     boolean es\_sostenible
-
-&nbsp;   }
-
-
-
-&nbsp;   FACTOR\_EMISION {
-
-&nbsp;     int id PK
-
-&nbsp;     int modo\_id FK
-
-&nbsp;     decimal g\_co2\_km
-
-&nbsp;     decimal g\_co2\_min
-
-&nbsp;     timestamp vigente\_desde
-
-&nbsp;     timestamp vigente\_hasta
-
-&nbsp;   }
-
-
-
-&nbsp;   RUTA\_CONSULTA {
-
-&nbsp;     uuid id PK
-
-&nbsp;     string origen
-
-&nbsp;     string destino
-
-&nbsp;     decimal distancia\_km
-
-&nbsp;     int duracion\_min
-
-&nbsp;     jsonb raw\_api
-
-&nbsp;     timestamp creado\_en
-
-&nbsp;   }
-
-
-
-&nbsp;   VIAJE {
-
-&nbsp;     uuid id PK
-
-&nbsp;     uuid usuario\_id FK
-
-&nbsp;     int modo\_id FK
-
-&nbsp;     uuid ruta\_id FK
-
-&nbsp;     date fecha
-
-&nbsp;     decimal distancia\_km
-
-&nbsp;     int duracion\_min
-
-&nbsp;     decimal emision\_g\_co2
-
-&nbsp;     decimal ahorro\_g\_co2
-
-&nbsp;   }
-
-
-
-&nbsp;   INSIGNIA {
-
-&nbsp;     int id PK
-
-&nbsp;     string codigo UNIQUE
-
-&nbsp;     string nombre
-
-&nbsp;     string descripcion
-
-&nbsp;     decimal umbral\_ahorro\_g
-
-&nbsp;   }
-
-
-
-&nbsp;   USUARIO\_INSIGNIA {
-
-&nbsp;     uuid usuario\_id FK
-
-&nbsp;     int insignia\_id FK
-
-&nbsp;     timestamp otorgada\_en
-
-&nbsp;   }
-
-
-
-&nbsp;   RANKING {
-
-&nbsp;     uuid id PK
-
-&nbsp;     date periodo\_inicio
-
-&nbsp;     date periodo\_fin
-
-&nbsp;     uuid usuario\_id FK
-
-&nbsp;     decimal ahorro\_total\_g\_co2
-
-&nbsp;     int posicion
-
-&nbsp;   }
-
-
-
-&nbsp;   USUARIO ||--o{ VIAJE : "realiza"
-
-&nbsp;   MODO\_TRANSPORTE ||--o{ VIAJE : "se usa en"
-
-&nbsp;   RUTA\_CONSULTA ||--o{ VIAJE : "referencia"
-
-&nbsp;   MODO\_TRANSPORTE ||--o{ FACTOR\_EMISION : "tiene"
-
-&nbsp;   USUARIO ||--o{ USUARIO\_INSIGNIA : "obtiene"
-
-&nbsp;   INSIGNIA ||--o{ USUARIO\_INSIGNIA : "es otorgada"
-
-&nbsp;   USUARIO ||--o{ RANKING : "acumula"
-
-
+    USUARIO {
+      uuid id
+      string nombre
+      string email
+      string password_hash
+      string rol
+      datetime creado_en
+    }
+
+    MODO_TRANSPORTE {
+      int id
+      string nombre
+      boolean es_sostenible
+    }
+
+    FACTOR_EMISION {
+      int id
+      int modo_id
+      decimal g_co2_km
+      decimal g_co2_min
+      datetime vigente_desde
+      datetime vigente_hasta
+    }
+
+    RUTA_CONSULTA {
+      uuid id
+      string origen
+      string destino
+      decimal distancia_km
+      int duracion_min
+      string raw_api
+      datetime creado_en
+    }
+
+    VIAJE {
+      uuid id
+      uuid usuario_id
+      int modo_id
+      uuid ruta_id
+      date fecha
+      decimal distancia_km
+      int duracion_min
+      decimal emision_g_co2
+      decimal ahorro_g_co2
+    }
+
+    INSIGNIA {
+      int id
+      string codigo
+      string nombre
+      string descripcion
+      decimal umbral_ahorro_g
+    }
+
+    USUARIO_INSIGNIA {
+      uuid usuario_id
+      int insignia_id
+      datetime otorgada_en
+    }
+
+    RANKING {
+      uuid id
+      date periodo_inicio
+      date periodo_fin
+      uuid usuario_id
+      decimal ahorro_total_g_co2
+      int posicion
+    }
+
+    USUARIO ||--o{ VIAJE : realiza
+    MODO_TRANSPORTE ||--o{ VIAJE : se_usa_en
+    RUTA_CONSULTA ||--o{ VIAJE : referencia
+    MODO_TRANSPORTE ||--o{ FACTOR_EMISION : tiene
+    USUARIO ||--o{ USUARIO_INSIGNIA : obtiene
+    INSIGNIA ||--o{ USUARIO_INSIGNIA : es_otorgada
+    USUARIO ||--o{ RANKING : acumula
 
