@@ -10,6 +10,7 @@
 \- Camila Ariza → \[camilaariza-bot]
 \- Tomás Rodriguez → \[TomasRP20]
 
+
 ## 🌍 Descripción
 
 GreenRoute es una aplicación que promueve la movilidad sostenible en la ciudad.  
@@ -52,4 +53,32 @@ Su objetivo es ayudar a las personas a elegir la ruta más ecológica y calcular
 
 Este proyecto se inspira en la encíclica **Laudato Si’** y en los **Objetivos de Desarrollo Sostenible (ODS)**, buscando unir tecnología y conciencia ambiental para transformar la manera en que nos movemos en la ciudad.
 
-- Ajuste menor para #31
+ feat/arq-5-readme-links
+
+
+\## 🧭 Arquitectura del Proyecto
+
+
+
+La siguiente sección reúne los diagramas desarrollados durante la fase de \*\*Diseño y Arquitectura\*\* de \*GreenRoute\*:
+
+
+
+| Tipo de diagrama | Archivo | Descripción |
+
+|------------------|----------|--------------|
+
+| 🗄️ \*\*Base de Datos (ER)\*\* | \[01-diagrama-bd.md](docs/arquitectura/01-diagrama-bd.md) | Representa el modelo relacional: usuarios, viajes, factores de emisión, ranking e insignias. |
+
+| 🧱 \*\*Clases (Dominio + API)\*\* | \[02-diagrama-clases.md](docs/arquitectura/02-diagrama-clases.md) | Muestra la arquitectura en capas Controller → Service → Repository y las entidades principales. |
+
+| 🧩 \*\*Componentes\*\* | \[03-diagrama-componentes.md](docs/arquitectura/03-diagrama-componentes.md) | Visualiza los módulos del sistema y su interacción con datos y servicios externos. |
+
+| ☁️ \*\*Despliegue (CI/CD + Infraestructura)\*\* | \[04-diagrama-despliegue.md](docs/arquitectura/04-diagrama-despliegue.md) | Define el entorno de producción con Nginx, Docker, PostgreSQL, Redis y GitHub Actions. |
+
+
+
+> 📌 Estos diagramas se encuentran en la carpeta \[`docs/arquitectura/`](docs/arquitectura/) y fueron creados con \*\*Mermaid\*\*, por lo que se renderizan automáticamente en GitHub.
+
+
+
