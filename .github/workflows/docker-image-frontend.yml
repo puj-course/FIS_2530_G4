@@ -1,0 +1,36 @@
+name: Docker Image CI Frontend
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Construir aplicación
+        run: npm run build
+
+      - name: Validar build
+        run: test -d build && echo "Build generado correctamente"
+
+      - name: Construir imagen Docker
+        run: docker build . -f Dockerfile -t frontend-image:latest
