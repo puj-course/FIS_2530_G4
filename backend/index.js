@@ -1,26 +1,34 @@
 const express = require('express');
- feat/segunda-entrega-tomas
+const cors = require('cors');
+require('dotenv').config();
+
+// Importar servicios y rutas
 const rutas = require('./api/rutas');
-const ServicioViajes = require('./servicios/ServicioViajes');
-const ServicioRanking = require('./servicios/ServicioRanking');
+const ServicioViajes = require('./services/ServicioViajes');
+const ServicioRanking = require('./services/ServicioRanking');
+
 const app = express();
+app.use(cors());
 app.use(express.json());
+
+// Inicializar servicios
 const servicioViajes = new ServicioViajes();
 const servicioRanking = new ServicioRanking();
-servicioViajes.on('viaje:guardado', (evt) => servicioRanking.alGuardarViaje(evt));
-app.use((req, _res, next) => { req.servicios = { servicioViajes, servicioRanking }; next(); });
+
+// Middleware o rutas de ejemplo
 app.use('/api', rutas);
-const PUERTO = process.env.PORT || 3000;
-app.listen(PUERTO, () => console.log(`✅ API GreenRoute en funcionamiento en el puerto ${PUERTO}`));
-=======
-const app = express();
+app.post('/viaje', (req, res) => {
+  const viaje = req.body;
+  servicioViajes.guardar(viaje);
+  res.json({ mensaje: 'Viaje guardado correctamente' });
+});
+
+// Endpoint para el health check del workflow
+app.get('/health', (req, res) => {
+  res.send('ok');
+});
+
 const PORT = process.env.PORT || 3001;
-
-app.get('/', (req, res) => {
-  res.send('Servidor funcionando 🚀');
-});
-
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
+  console.log(⁠ ✅ API GreenRoute en funcionamiento en el puerto ${PORT} ⁠);
 });
-main
