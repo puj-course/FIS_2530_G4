@@ -9,48 +9,32 @@
 ```mermaid
 
 flowchart TB
+  %% --- Pipeline CI/CD ---
+  DEV[Desarrollo local] -->|Push de código| GIT[Repositorio GitHub]
+  GIT -->|Ejecución CI/CD| ACTIONS[GitHub Actions]
+  ACTIONS -->|Build & Push de imágenes| REGISTRY[Container Registry]
 
-&nbsp; Dev\[Dev local] --> GH\[GitHub Repo]
+  %% --- Entorno de Producción ---
+  subgraph PRODUCCION["Producción"]
+    NGINX[Nginx Reverse Proxy :80 / :443]
+    FRONT[Frontend Container]
+    API[API Container]
+    DB[(PostgreSQL)]
+    REDIS[(Redis Cache)]
+    MON[Monitoring / Logs]
+  end
 
-&nbsp; GH -->|CI| GA\[GitHub Actions]
+  %% --- Flujo de Despliegue ---
+  REGISTRY -->|Pull de imágenes| FRONT
+  REGISTRY -->|Pull de imágenes| API
 
-&nbsp; GA -->|build images\\npush| REG\[Container Registry]
+  NGINX <-->|HTTPS| FRONT
+  FRONT -->|HTTPS| API
+  API -->|TCP 5432| DB
+  API -->|TCP 6379| REDIS
+  API --> MON
 
-
-
-&nbsp; subgraph PROD\[Producción]
-
-&nbsp;   RP\[Nginx Reverse Proxy\\n:80 / :443]
-
-&nbsp;   FE\[Frontend Container]
-
-&nbsp;   BE\[API Container]
-
-&nbsp;   DB\[(PostgreSQL)]
-
-&nbsp;   RE\[(Redis)]
-
-&nbsp;   MON\[Monitoring / Logs]
-
-&nbsp; end
-
-
-
-&nbsp; REG --> FE
-
-&nbsp; REG --> BE
-
-
-
-&nbsp; RP <-->|HTTPS| FE
-
-&nbsp; FE -->|HTTPS| BE
-
-&nbsp; BE -->|TCP 5432| DB
-
-&nbsp; BE -->|TCP 6379| RE
-
-&nbsp; BE --> MON
-
-
+  %% --- Notas opcionales ---
+  %% Las variables de entorno usadas en el despliegue:
+  %% DATABASE_URL, REDIS_URL, JWT_SECRET, MAPS_API_KEY
 
