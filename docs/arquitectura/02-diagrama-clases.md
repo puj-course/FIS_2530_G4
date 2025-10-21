@@ -5,6 +5,7 @@
 
 ```mermaid
 classDiagram
+  %% ---------------- Dominio ----------------
   class Usuario {
     +id: UUID
     +nombre: string
@@ -43,6 +44,7 @@ classDiagram
     +ahorro(): decimal
   }
 
+  %% ---------------- Repositorios ----------------
   class ViajeRepository {
     +save(v: Viaje): void
     +findByUsuario(usuarioId: UUID): Viaje[]
@@ -52,15 +54,45 @@ classDiagram
     +vigente(modoId: int, fecha: Date): FactorEmision
   }
 
+  %% ---------------- Patrones GoF ----------------
+  class DatabaseManager {
+    <<Singleton>>
+    -instance: DatabaseManager
+    +getInstance(): DatabaseManager
+    +getConnection(): Connection
+  }
+
   class RoutingProvider {
     <<interface>>
     +route(origen: string, destino: string, modo: string): RutaConsulta
   }
 
   class OpenRouteServiceAdapter {
+    <<Adapter>>
     +route(origen: string, destino: string, modo: string): RutaConsulta
   }
 
+  class CalculoEmisionStrategy {
+    <<interface>>
+    +calcularEmision(distKm: decimal): decimal
+  }
+
+  class CalculoBicicleta {
+    <<Strategy>>
+    +calcularEmision(distKm: decimal): decimal
+  }
+
+  class CalculoBus {
+    <<Strategy>>
+    +calcularEmision(distKm: decimal): decimal
+  }
+
+  class CalculoCarro {
+    <<Strategy>>
+    +calcularEmision(distKm: decimal): decimal
+  }
+
+  %% ---------------- Servicios ----------------
   class EmisionService {
     +calcularEmision(distKm: decimal, modoId: int, fecha: Date): decimal
     +calcularAhorro(distKm: decimal, modoElegidoId: int, fecha: Date): decimal
@@ -71,6 +103,7 @@ classDiagram
     +top(n: int): RankingEntry[]
   }
 
+  %% ---------------- Controladores ----------------
   class ViajeController {
     +POST /viajes
     +GET  /viajes/mios
@@ -84,11 +117,22 @@ classDiagram
     +GET /ranking?periodo
   }
 
+  %% ---------------- Relaciones ----------------
+  DatabaseManager --> FactorEmisionRepository : "usa"
+  DatabaseManager --> ViajeRepository : "usa"
+
+  EmisionService --> CalculoEmisionStrategy : "usa"
+  CalculoEmisionStrategy <|.. CalculoBicicleta
+  CalculoEmisionStrategy <|.. CalculoBus
+  CalculoEmisionStrategy <|.. CalculoCarro
+
+  RutaController --> RoutingProvider
+  OpenRouteServiceAdapter ..|> RoutingProvider
+
   Viaje --> ModoTransporte
   Viaje --> RutaConsulta
+
   EmisionService --> FactorEmisionRepository
   ViajeController --> EmisionService
   ViajeController --> ViajeRepository
-  RutaController --> RoutingProvider
-  OpenRouteServiceAdapter ..|> RoutingProvider
   RankingController --> RankingService
