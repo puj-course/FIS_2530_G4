@@ -1,5 +1,5 @@
 // backend/controllers/notificationController.js
-const Notification = require('../models/notification');           // si usas BD
+         
 const motivationService = require('../services/motivationService');
 const { sendSMS } = require('../services/smsService');            // <— IMPORTANTE
 require('dotenv').config();
