@@ -14,7 +14,9 @@ app.use('/notifications', notificationRoutes);
 // Ruta simple para comprobar que está vivo
 app.get('/', (_req, res) => res.send('Servidor activo ✅'));
 
+// Puerto
 const PORT = process.env.PORT || 3000;
+
+// Escuchar servidor
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`); 
-});
