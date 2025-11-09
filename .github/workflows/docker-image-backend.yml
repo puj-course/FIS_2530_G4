@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Ejecutar pruebas unitarias
-        run: npm test
+        run: npx jest
 
       - name: Validar ejecución del servidor
         run: node index.js & sleep 5 && curl -f http://localhost:3001
