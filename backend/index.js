@@ -7,19 +7,19 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Rutas
 const notificationRoutes = require('./routes/notificationRoutes');
 app.use('/notifications', notificationRoutes);
 
-// Ruta simple para comprobar que está vivo
 app.get('/', (_req, res) => {
   res.send('Servidor activo ✅');
 });
 
-// Puerto
-const PORT = process.env.PORT || 3001;
+if (require.main === module) {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+  });
+}
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+module.exports = app;
+
