@@ -17,7 +17,7 @@ app.get('/', (_req, res) => {
 });
 
 // Puerto
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Iniciar servidor
 app.listen(PORT, () => {
