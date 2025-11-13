@@ -1,0 +1,28 @@
+* [33m0c1f40c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m chore(github): ajustes de configuración del repo (closes #31)
+*   [33m281848d[m Merge pull request #52 from puj-course/LuisDiaz2250-patch-1
+[32m|[m[33m\[m  
+[32m|[m * [33m5ae742c[m[33m ([m[1;31morigin/LuisDiaz2250-patch-1[m[33m)[m Update README.md
+[32m|[m[32m/[m  
+*   [33mba5a349[m Merge pull request #51 from puj-course/primera-entrega
+[34m|[m[35m\[m  
+[34m|[m * [33m0b3e35f[m[33m ([m[1;31morigin/primera-entrega[m[33m)[m chore(repo): mejora de la version del GitHub, close #33
+[34m|[m * [33mf3a1ddc[m chore(repo): mejora de la version del GitHub, close #33
+[34m|[m * [33m22a71ac[m feat(project): estructura inicial del proyecto, close #32
+[34m|[m * [33m651a883[m feat(project): estructura inicial del proyecto, close #32
+[34m|[m * [33mf7392cd[m Implementada estructura inicial del proyecto, close #32
+[34m|[m * [33m62c9aa0[m feat(scrum): consultar poker scrum #46
+[34m|[m[34m/[m  
+* [33m5b8876d[m Update README.md
+*   [33m8e98597[m[33m ([m[1;31morigin/feature/#3-diseno-aplicacion-formato[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/chore/#31-mejora-version-github[m[33m)[m Merge pull request #30 from puj-course/feature-folder-structure
+[36m|[m[1;31m\[m  
+[36m|[m * [33md6a9c67[m[33m ([m[1;31morigin/feature-folder-structure[m[33m)[m se agregan las carpetas faltantes del proyecto
+* [1;31m|[m [33m35e6ac8[m Merge pull request #29 from puj-course/feature-start-project
+[1;32m|[m[1;31m\[m[1;31m|[m 
+[1;32m|[m * [33m91c3294[m[33m ([m[1;31morigin/feature-start-project[m[33m)[m se crea la estructura del proyecto inicial y se crea el react app
+[1;32m|[m[1;32m/[m  
+*   [33m6024cbc[m Merge pull request #26 from puj-course/feature-readme
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33mde94305[m[33m ([m[1;31morigin/feature-readme[m[33m)[m feat: agregar nombre al README (#25)
+[1;34m|[m[1;34m/[m  
+* [33mb20857e[m Update README.md
+* [33m2cd0665[m Initial commit

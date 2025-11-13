@@ -1,0 +1,38 @@
+{
+  "name": "fis_2530_g4",
+  "version": "1.0.0",
+  "description": "\\## Integrantes",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  "test": "jest --passWithNoTests",
+  "test:cov": "jest --coverage",
+  "lint": "eslint backend frontend"
+}
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puj-course/FIS_2530_G4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/puj-course/FIS_2530_G4/issues"
+  },
+  "homepage": "https://github.com/puj-course/FIS_2530_G4#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-import": "^2.32.0",
+    "jest": "^30.2.0"
+  }
+}
+x O X
+
+X O

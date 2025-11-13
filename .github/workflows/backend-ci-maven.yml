@@ -1,0 +1,45 @@
+name: Backend CI & Sonar (Maven)
+
+on:
+  push:
+    paths:
+      - 'backend-java/**'
+      - '.github/workflows/backend-ci-maven.yml'
+  pull_request:
+    paths:
+      - 'backend-java/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Build & Metrics (tests, coverage, PMD/CPD, SpotBugs, Checkstyle)
+        working-directory: backend-java
+        run: mvn -B clean verify
+
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-metrics-reports
+          path: |
+            backend-java/target/site/**
+            backend-java/target/spotbugsXml.xml
+
+      # Descomenta este bloque cuando ya tengas SONAR_TOKEN en Secrets
+      # - name: SonarCloud Scan (Maven)
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   working-directory: backend-java
+      #   run: mvn -B -DskipTests sonar:sonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
